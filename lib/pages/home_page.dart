@@ -52,11 +52,12 @@ class _HomePageState extends State<HomePage> {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               expandedHeight: size.height * 0.40,
               flexibleSpace: FlexibleSpaceBar(
                 background: Padding(
                   padding:  EdgeInsets.all(size.width * 0.10),
-                  child: Text('home page image'),
+                  child: Image.asset('assets/images/thongminh.png'),
                 ),
               ),
             ),

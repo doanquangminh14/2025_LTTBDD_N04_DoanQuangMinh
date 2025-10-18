@@ -16,7 +16,7 @@ class TopicTile extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.lightBlue,
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(30),
         ) ,
         child: Column(
@@ -25,7 +25,7 @@ class TopicTile extends StatelessWidget {
               flex: 2,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: Image.asset('assets/images/$topic.jpg'),
+                child: Image.asset('assets/images/$topic.png'),
               )),
             Expanded(child: Text(topic)),
           ],
