@@ -1,0 +1,35 @@
+import '../models/word.dart';
+
+final List<Word> words = [
+
+Word(topic: 'Biển', vietnamese: 'Đồ bơi', character: 'Swimsuit', transcription: '/ˈswɪm.suːt/'),
+Word(topic: 'Du lịch', vietnamese: 'Hộ chiếu', character: 'Passport', transcription: '/ˈpɑːs.pɔːt/'),
+Word(topic: 'Du lịch', vietnamese: 'Khách sạn', character: 'Hotel', transcription: '/həʊˈtel/'),
+Word(topic: 'Ẩm thực', vietnamese: 'Mì Ý', character: 'Spaghetti', transcription: '/spəˈɡet.i/'),
+Word(topic: 'Ẩm thực', vietnamese: 'Pizza', character: 'Pizza', transcription: '/ˈpiːt.sə/'),
+Word(topic: 'Trường học', vietnamese: 'Giáo viên', character: 'Teacher', transcription: '/ˈtiː.tʃər/'),
+Word(topic: 'Trường học', vietnamese: 'Học sinh', character: 'Student', transcription: '/ˈstjuː.dənt/'),
+Word(topic: 'Công nghệ', vietnamese: 'Máy tính', character: 'Computer', transcription: '/kəmˈpjuː.tər/'),
+Word(topic: 'Công nghệ', vietnamese: 'Điện thoại', character: 'Smartphone', transcription: '/ˈsmɑːt.fəʊn/'),
+Word(topic: 'Thể thao', vietnamese: 'Bóng đá', character: 'Football', transcription: '/ˈfʊt.bɔːl/'),
+Word(topic: 'Thể thao', vietnamese: 'Bơi lội', character: 'Swimming', transcription: '/ˈswɪm.ɪŋ/'),
+Word(topic: 'Gia đình', vietnamese: 'Cha mẹ', character: 'Parents', transcription: '/ˈpeə.rənts/'),
+Word(topic: 'Gia đình', vietnamese: 'Anh chị em', character: 'Siblings', transcription: '/ˈsɪb.lɪŋz/'),
+Word(topic: 'Động vật', vietnamese: 'Con mèo', character: 'Cat', transcription: '/kæt/'),
+Word(topic: 'Động vật', vietnamese: 'Con chó', character: 'Dog', transcription: '/dɒɡ/'),
+Word(topic: 'Thiên nhiên', vietnamese: 'Cây cối', character: 'Tree', transcription: '/triː/'),
+Word(topic: 'Thiên nhiên', vietnamese: 'Hoa', character: 'Flower', transcription: '/ˈflaʊ.ər/'),
+Word(topic: 'Thời tiết', vietnamese: 'Trời mưa', character: 'Rainy', transcription: '/ˈreɪ.ni/'),
+Word(topic: 'Thời tiết', vietnamese: 'Nắng', character: 'Sunny', transcription: '/ˈsʌn.i/'),
+Word(topic: 'Cảm xúc', vietnamese: 'Hạnh phúc', character: 'Happy', transcription: '/ˈhæp.i/'),
+Word(topic: 'Cảm xúc', vietnamese: 'Buồn', character: 'Sad', transcription: '/sæd/'),
+Word(topic: 'Màu sắc', vietnamese: 'Đỏ', character: 'Red', transcription: '/red/'),
+Word(topic: 'Màu sắc', vietnamese: 'Xanh dương', character: 'Blue', transcription: '/bluː/'),
+Word(topic: 'Phương tiện', vietnamese: 'Ô tô', character: 'Car', transcription: '/kɑːr/'),
+Word(topic: 'Phương tiện', vietnamese: 'Xe đạp', character: 'Bicycle', transcription: '/ˈbaɪ.sɪ.kəl/'),
+Word(topic: 'Trang phục', vietnamese: 'Áo sơ mi', character: 'Shirt', transcription: '/ʃɜːt/'),
+Word(topic: 'Trang phục', vietnamese: 'Giày', character: 'Shoes', transcription: '/ʃuːz/'),
+Word(topic: 'Công việc', vietnamese: 'Đầu bếp', character: 'Chef', transcription: '/ʃef/'),
+Word(topic: 'Công việc', vietnamese: 'Bác sĩ', character: 'Doctor', transcription: '/ˈdɒk.tər/'),
+
+];
