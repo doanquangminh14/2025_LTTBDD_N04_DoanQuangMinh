@@ -1,9 +1,10 @@
 import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../components/home_page/app/custom_appbar.dart';
 
 class FlashcardsPage extends StatefulWidget {
-  const FlashcardsPage({Key? key}) : super(key:key);
+  const FlashcardsPage({Key? key}) : super(key: key);
 
   @override
   State<FlashcardsPage> createState() => _FlashcardsPageState();
@@ -13,11 +14,13 @@ class _FlashcardsPageState extends State<FlashcardsPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<FlashcardsNotifier>(
-         builder: (_,notifier,__)=> Scaffold(
-        appBar: AppBar(
-          title: Text(notifier.topic),
-        ),
+      builder: (_, notifier, __) => Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(56),
+            child: CustomAppBar()),
       ),
     );
   }
 }
+
+
