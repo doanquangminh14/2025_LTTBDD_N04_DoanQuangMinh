@@ -16,7 +16,7 @@ class TopicTile extends StatelessWidget {
       child: GestureDetector(
         onTap: (){
           print('tile tapped $topic');
-          loadSession(context: context);
+          loadSession(context: context, topic: topic);
         },
         child: Container(
           decoration: BoxDecoration(
