@@ -1,6 +1,8 @@
+import 'package:flashcard_app/animations/fade_in_animation.dart';
 import 'package:flutter/material.dart';
 import '../data/words.dart';
 import '../components/home_page/topic_tile.dart';
+import '../configs/constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,28 +12,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-   
-   List<String> _topics = [];
+  List<String> _topics = [];
 
   @override
-  initState(){
-    for(var t in words){
-      if(!_topics.contains(t.topic)){
-          _topics.add(t.topic);
-      } 
+  initState() {
+    for (var t in words) {
+      if (!_topics.contains(t.topic)) {
+        _topics.add(t.topic);
+      }
 
-    _topics.sort();
-
+      _topics.sort();
     }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
-  final size = MediaQuery.of(context).size;
-  final widthPadding = size.width* 0.04;
-
+    final size = MediaQuery.of(context).size;
+    final widthPadding = size.width * 0.04;
 
     return Scaffold(
       appBar: AppBar(
@@ -42,13 +40,38 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         toolbarHeight: size.height * 0.15,
-        title: Text('English Flashcards'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                SizedBox(
+                  width: size.width * kIconPadding,
+                  child: Image.asset('assets/images/Settings.png'),
+                ),
+                SizedBox(height: size.height * kIconPadding),
+              ],
+            ),
+            const FadeInAnimation(
+                child: const
+                Text('English Flashcards'
+                )),
+            Column(
+              children: [
+                SizedBox(
+                  width: size.width * kIconPadding,
+                  child: Image.asset('assets/images/Review.png'),
+                ),
+                SizedBox(height: size.height * kIconPadding),
+              ],
+            ),
+          ],
+        ),
         centerTitle: true,
         elevation: 0,
-        
       ),
       body: Padding(
-        padding:  EdgeInsets.only(left: widthPadding, right: widthPadding),
+        padding: EdgeInsets.only(left: widthPadding, right: widthPadding),
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
@@ -56,24 +79,25 @@ class _HomePageState extends State<HomePage> {
               expandedHeight: size.height * 0.40,
               flexibleSpace: FlexibleSpaceBar(
                 background: Padding(
-                  padding:  EdgeInsets.all(size.width * 0.10),
-                  child: Image.asset('assets/images/thongminh.png'),
+                  padding: EdgeInsets.all(size.width * 0.10),
+                  child: FadeInAnimation(child: Image.asset('assets/images/thongminh.png')),
                 ),
               ),
             ),
-            SliverGrid(delegate: SliverChildBuilderDelegate(
-              childCount: _topics.length,
-              (context, index) => TopicTile(topic: _topics[index]),
-              ), gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                childCount: _topics.length,
+                (context, index) => TopicTile(topic: _topics[index]),
+              ),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 6,
                 mainAxisSpacing: 6,
-                ),
-                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
