@@ -3,7 +3,7 @@ import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcard_app/pages/home_page.dart';
 import 'package:provider/provider.dart';
-import 'configs/themes.dart';
+//import 'configs/themes.dart';
 
 void main() {
   runApp(MultiProvider(

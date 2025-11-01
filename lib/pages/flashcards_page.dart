@@ -1,7 +1,7 @@
 import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../components/home_page/app/custom_appbar.dart';
+import '../components/app/custom_appbar.dart';
 
 class FlashcardsPage extends StatefulWidget {
   const FlashcardsPage({Key? key}) : super(key: key);
