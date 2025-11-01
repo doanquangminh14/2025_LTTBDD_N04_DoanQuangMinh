@@ -18,6 +18,14 @@ class Card2 extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Consumer<FlashcardsNotifier>(
       builder:(_,notifier,__) => GestureDetector(
+        onHorizontalDragEnd:(details){
+          if(details.primaryVelocity! > 100){
+            notifier.runSwipeCard2 (direction: SlideDirection.rightAway);
+          }
+          if(details.primaryVelocity! < -100){
+            notifier.runSwipeCard2 (direction: SlideDirection.leftAway);
+          }
+        } ,
         child: HalfFlipAnimation(
           animate:notifier.flipCard2,
           reset: false,
@@ -26,7 +34,8 @@ class Card2 extends StatelessWidget {
             print('anim 2 flip completed');
           },
           child: SlideAnimation(
-              direction: SlideDirection.upIn,
+              animate: notifier.swipeCard2,
+              direction: notifier.swipedDirection,
               child: Center(
                 child: Container(
                   width: size.width * 0.90,

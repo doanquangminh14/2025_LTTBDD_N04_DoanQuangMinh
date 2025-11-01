@@ -1,3 +1,4 @@
+import 'package:flashcard_app/enums/slide_direction.dart';
 import 'package:flutter/material.dart';
 
 class FlashcardsNotifier extends ChangeNotifier{
@@ -8,7 +9,9 @@ class FlashcardsNotifier extends ChangeNotifier{
      notifyListeners();
   }
 
-  bool flipCard1 = false, flipCard2 = false;
+SlideDirection swipedDirection = SlideDirection.none;
+
+  bool flipCard1 = false, flipCard2 = false, swipeCard2 = false;
 
   runFlipCard1(){
     flipCard1 = true;
@@ -19,5 +22,11 @@ runFlipCard2(){
     flipCard2 = true;
     notifyListeners();
   }
+
+runSwipeCard2({required SlideDirection direction}){
+  swipedDirection = direction;
+  swipeCard2 = true;
+  notifyListeners();
+}
 
 }
