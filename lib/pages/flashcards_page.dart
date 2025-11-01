@@ -1,4 +1,7 @@
+import 'package:flashcard_app/animations/half_flip_animation.dart';
 import 'package:flashcard_app/animations/slide_animation.dart';
+import 'package:flashcard_app/components/flashcards_page/card_1.dart';
+import 'package:flashcard_app/components/flashcards_page/card_2.dart';
 import 'package:flashcard_app/enums/slide_direction.dart';
 import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +10,7 @@ import '../components/app/custom_appbar.dart';
 
 
 class FlashcardsPage extends StatefulWidget {
-  const FlashcardsPage({Key? key}) : super(key: key);
+  const FlashcardsPage({ super.key});
 
   @override
   State<FlashcardsPage> createState() => _FlashcardsPageState();
@@ -16,29 +19,24 @@ class FlashcardsPage extends StatefulWidget {
 class _FlashcardsPageState extends State<FlashcardsPage> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    
 
     return Consumer<FlashcardsNotifier>(
       builder: (_, notifier, __) => Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(56),
             child: CustomAppBar()),
-      body: SlideAnimation(
-          direction: SlideDirection.upIn,
-          child: Center(
-            child: Container(
-              width: size.width * 0.90,
-              height: size.height * 0.70,
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
-          ),
-        ),
+      body: Stack(
+        children: [
+          Card2(),
+          Card1(),
+        ],
+      ),
       ),
     );
   }
 }
+
 
 
 

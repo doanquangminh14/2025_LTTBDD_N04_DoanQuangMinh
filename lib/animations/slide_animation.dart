@@ -2,8 +2,7 @@ import 'package:flashcard_app/enums/slide_direction.dart';
 import 'package:flutter/material.dart';
 
 class SlideAnimation extends StatefulWidget {
-  const SlideAnimation({required this.child, required this.direction, this.animate = true,
-   Key? key}) : super(key: key);
+  const SlideAnimation({required this.child, required this.direction, this.animate = true, super.key});
 
   final Widget child;
   final SlideDirection direction;

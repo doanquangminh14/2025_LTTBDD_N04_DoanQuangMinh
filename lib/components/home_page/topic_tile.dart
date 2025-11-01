@@ -3,10 +3,7 @@ import 'package:flashcard_app/utils/methods.dart';
 import 'package:flutter/material.dart';
 
 class TopicTile extends StatelessWidget {
-  const TopicTile({
-    Key? key,
-    required this.topic,
-  }) : super(key: key);
+  const TopicTile({required this.topic, super.key});
 
   final String topic;
 
