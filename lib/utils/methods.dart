@@ -6,8 +6,10 @@ import 'package:provider/provider.dart';
 
 loadSession({required BuildContext context, required String topic}){
 
-   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => FlashcardsPage()));
-   Provider.of<FlashcardsNotifier>(context,listen:false).setTopic(topic: topic);
+   Navigator.of(context).pushReplacement(
+    MaterialPageRoute(builder: (context) => FlashcardsPage()));
+   Provider.of<FlashcardsNotifier>(context,listen:false)
+     .setTopic(topic: topic);
 }
 
 

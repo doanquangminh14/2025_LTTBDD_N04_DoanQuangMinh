@@ -3,12 +3,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class HalfFlipAnimation extends StatefulWidget {
-  const HalfFlipAnimation({required this.child, required this.animate, required this.reset, required this.filipFromHalfWay, required this.animationCompleted,super.key});
+  const HalfFlipAnimation({required this.child, required this.animate, required this.reset, required this.flipFromHalfWay, required this.animationCompleted,super.key});
 
   final Widget child;
   final bool animate;
   final bool reset;
-  final bool filipFromHalfWay;
+  final bool flipFromHalfWay;
   final VoidCallback animationCompleted;
 
   @override
@@ -22,7 +22,7 @@ class _HalfFlipAnimationState extends State<HalfFlipAnimation> with SingleTicker
   @override
   initState(){
     _animationController = AnimationController(
-      duration: Duration(milliseconds: 1000),
+      duration: Duration(milliseconds: 300),
       vsync: this)..addListener((){
         if(_animationController.isCompleted){
           widget.animationCompleted.call();
@@ -52,9 +52,8 @@ class _HalfFlipAnimationState extends State<HalfFlipAnimation> with SingleTicker
 
   @override
   Widget build(BuildContext context) {
-    
     double rotationAdjustment = 0;
-    if(widget.filipFromHalfWay){
+    if(widget.flipFromHalfWay){
       rotationAdjustment = pi/2;
     }
 

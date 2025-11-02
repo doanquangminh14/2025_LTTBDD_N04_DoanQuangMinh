@@ -20,20 +20,28 @@ class Card2 extends StatelessWidget {
       builder:(_,notifier,__) => GestureDetector(
         onHorizontalDragEnd:(details){
           if(details.primaryVelocity! > 100){
-            notifier.runSwipeCard2 (direction: SlideDirection.rightAway);
+            notifier.runSwipeCard2 (direction: SlideDirection.leftAway);
+            notifier.runSlideCard1();
+            notifier.setIgnoreTouch(ignore: true);
           }
           if(details.primaryVelocity! < -100){
-            notifier.runSwipeCard2 (direction: SlideDirection.leftAway);
+            notifier.runSwipeCard2 (direction: SlideDirection.rightAway);
+             notifier.runSlideCard1();
+             notifier.setIgnoreTouch(ignore: true);
           }
         } ,
         child: HalfFlipAnimation(
           animate:notifier.flipCard2,
-          reset: false,
-          filipFromHalfWay: true,
+          reset: notifier.resetFlipCard2,
+          flipFromHalfWay: true,
           animationCompleted: (){
-            print('anim 2 flip completed');
+            notifier.setIgnoreTouch(ignore: false);
           },
           child: SlideAnimation(
+            animationCompleted: (){
+              notifier.resetCard2();
+            },
+              reset: notifier.resetSwipeCard2,
               animate: notifier.swipeCard2,
               direction: notifier.swipedDirection,
               child: Center(

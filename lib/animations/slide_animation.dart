@@ -2,11 +2,14 @@ import 'package:flashcard_app/enums/slide_direction.dart';
 import 'package:flutter/material.dart';
 
 class SlideAnimation extends StatefulWidget {
-  const SlideAnimation({required this.child, required this.direction, this.animate = true, super.key});
+  const SlideAnimation({required this.child, required this.direction, this.animate = true,
+   this.reset,this.animationCompleted, super.key});
 
   final Widget child;
   final SlideDirection direction;
   final bool animate;
+  final bool? reset;
+  final VoidCallback? animationCompleted;
   
 
   @override
@@ -21,8 +24,12 @@ class  _SildeAnimationState extends State <SlideAnimation> with SingleTickerProv
 initState(){
 
   _animationController = AnimationController(
-    duration: Duration(milliseconds: 4000),
-    vsync: this);
+    duration: Duration(milliseconds: 600),
+    vsync: this)..addListener((){
+    if(_animationController.isCompleted){
+      widget.animationCompleted?.call();
+    }
+    });
   if(widget.animate){
    _animationController.forward(); 
   }
@@ -32,6 +39,10 @@ initState(){
 
 @override
  didUpdateWidget(covariant oldWidget) {
+    if(widget.reset == true){
+      _animationController.reset();
+    }
+
     if(widget.animate){
       _animationController.forward();
     }
@@ -71,7 +82,9 @@ initState(){
         break; 
     }
   _animation = tween.animate(CurvedAnimation(parent: _animationController, curve: Curves.easeInOut));
-    return  SlideTransition(position: _animation,
-        child: widget.child,);
+    return  SlideTransition(
+      position: _animation,
+        child: widget.child,
+        );
   }
 }
