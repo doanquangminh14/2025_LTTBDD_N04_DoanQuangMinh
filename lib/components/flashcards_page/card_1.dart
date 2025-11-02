@@ -1,5 +1,7 @@
 import 'package:flashcard_app/animations/half_flip_animation.dart';
 import 'package:flashcard_app/animations/slide_animation.dart';
+import 'package:flashcard_app/components/flashcards_page/card_display.dart';
+import 'package:flashcard_app/configs/constants.dart';
 import 'package:flashcard_app/enums/slide_direction.dart';
 import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +33,8 @@ class Card1 extends StatelessWidget {
             notifier.runFlipCard2();
           },
           child: SlideAnimation(
+            animationDuration: 1000,
+            animationDelay: 200,
             animationCompleted: (){
               notifier.setIgnoreTouch(ignore: false);
             },
@@ -42,9 +46,14 @@ class Card1 extends StatelessWidget {
                   width: size.width * 0.90,
                   height: size.height * 0.70,
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(kCircularBorderRadius),
+                    border: Border.all(
+                       color: Colors.white,
+                       width: kCardBorderWidth,
+                    ),
                     color: Theme.of(context).primaryColor,
                   ),
-                  child: Text(notifier.word1.vietnamese),
+                  child: CardDisplay(isCard1: true),
                 ),
               ),
             ),
@@ -53,3 +62,5 @@ class Card1 extends StatelessWidget {
     );
   }
 }
+
+

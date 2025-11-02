@@ -4,13 +4,17 @@ import 'package:flutter/material.dart';
 
 class SlideAnimation extends StatefulWidget {
   const SlideAnimation({required this.child, required this.direction, this.animate = true,
-   this.reset,this.animationCompleted, super.key});
+   this.reset,this.animationCompleted,
+ this.animationDuration= kSlideAwayDuration,this.animationDelay =0 ,super.key});
 
   final Widget child;
   final SlideDirection direction;
   final bool animate;
   final bool? reset;
   final VoidCallback? animationCompleted;
+  final int animationDuration;
+  final int animationDelay;
+
   
 
   @override
@@ -25,15 +29,13 @@ class  _SildeAnimationState extends State <SlideAnimation> with SingleTickerProv
 initState(){
 
   _animationController = AnimationController(
-    duration: const Duration(milliseconds: kSlideAwayDuration),
+    duration:  Duration(milliseconds: widget.animationDuration),
     vsync: this)..addListener((){
     if(_animationController.isCompleted){
       widget.animationCompleted?.call();
     }
     });
-  if(widget.animate){
-   _animationController.forward(); 
-  }
+
   
   super.initState();
 }
@@ -45,7 +47,15 @@ initState(){
     }
 
     if(widget.animate){
-      _animationController.forward();
+      if(widget.animationDelay>0) {
+        Future.delayed(Duration(milliseconds: widget.animationDelay),(){
+          if(mounted) {
+            _animationController.forward();
+          }
+        });
+      }else{
+        _animationController.forward();
+      }
     }
     super.didUpdateWidget(oldWidget);
   }

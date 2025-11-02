@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 class FlashcardsNotifier extends ChangeNotifier{
 
   String topic = "";
-  Word word1 = Word(topic: "",vietnamese: "",character: "", transcription: "");
-  Word word2 = Word(topic: "",vietnamese: "",character: "", transcription: "");
+  Word word1 = Word(topic: "",vietnamese: "Mui ten",character: "", transcription: "");
+  Word word2 = Word(topic: "",vietnamese: "Mui ten",character: "", transcription: "");
   
   List<Word> selectedWords =[];
 
