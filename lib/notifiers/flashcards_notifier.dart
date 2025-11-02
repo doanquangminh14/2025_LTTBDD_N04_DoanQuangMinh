@@ -57,7 +57,7 @@ runSwipeCard2({required SlideDirection direction}){
 
 resetCard2(){
   resetFlipCard2 = true;
-  resetSlideCard1 = true;
+  resetSwipeCard2 = true;
   flipCard2 = false;
   swipeCard2 = false;
 }
