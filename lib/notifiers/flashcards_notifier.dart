@@ -1,14 +1,45 @@
+import 'dart:math';
+
+import 'package:flashcard_app/configs/constants.dart';
+import 'package:flashcard_app/data/words.dart';
 import 'package:flashcard_app/enums/slide_direction.dart';
+import 'package:flashcard_app/models/word.dart';
 import 'package:flutter/material.dart';
 
 class FlashcardsNotifier extends ChangeNotifier{
 
   String topic = "";
+  Word word1 = Word(topic: "",vietnamese: "",character: "", transcription: "");
+  Word word2 = Word(topic: "",vietnamese: "",character: "", transcription: "");
+  
+  List<Word> selectedWords =[];
 
   setTopic({required String topic}){
      this.topic = topic;
      notifyListeners();
   }
+
+generateAllSelectedWords(){
+  selectedWords.clear();
+  selectedWords = words.where((element) => element.topic == topic).toList();
+}
+
+generateCurrentWord(){
+  if(selectedWords.isNotEmpty){
+      final r = Random().nextInt(selectedWords.length);
+      word1 = selectedWords[r];
+      selectedWords.removeAt(r);
+  }else{
+    print('all works selected');
+  }
+
+  Future.delayed(const Duration(milliseconds: kSlideAwayDuration),(){
+         word2 = word1;
+  });
+
+}
+
+///Animation Code
 
    bool ignoreTouches = true;
 

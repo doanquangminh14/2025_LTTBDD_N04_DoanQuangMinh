@@ -1,3 +1,4 @@
+import 'package:flashcard_app/configs/constants.dart';
 import 'package:flashcard_app/enums/slide_direction.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class  _SildeAnimationState extends State <SlideAnimation> with SingleTickerProv
 initState(){
 
   _animationController = AnimationController(
-    duration: Duration(milliseconds: 600),
+    duration: const Duration(milliseconds: kSlideAwayDuration),
     vsync: this)..addListener((){
     if(_animationController.isCompleted){
       widget.animationCompleted?.call();
