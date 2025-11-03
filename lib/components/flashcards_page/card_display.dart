@@ -1,3 +1,4 @@
+import 'package:flashcard_app/components/flashcards_page/tts_button.dart';
 import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,7 @@ class CardDisplay extends StatelessWidget {
             buildImage(notifier.word2.vietnamese),
             buildTextBox(notifier.word1.character, context,2),
             buildTextBox(notifier.word1.transcription, context,1),
-
+            TTSButton(),
           ],
         ),
       ),

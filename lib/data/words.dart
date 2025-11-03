@@ -2,14 +2,6 @@ import '../models/word.dart';
 
 final List<Word> words = [
 
-// --- Chủ đề: Beach (Bãi biển) ---
-  Word(topic: 'Beach', vietnamese: 'Đồ bơi', character: 'Swimsuit', transcription: '/ˈswɪm.suːt/'),
-  Word(topic: 'Beach', vietnamese: 'Kem chống nắng', character: 'Sunscreen', transcription: '/ˈsʌn.skriːn/'),
-  Word(topic: 'Beach', vietnamese: 'Khăn tắm', character: 'Towel', transcription: '/ˈtaʊ.əl/'),
-  Word(topic: 'Beach', vietnamese: 'Bãi cát', character: 'Sand', transcription: '/sænd/'),
-  Word(topic: 'Beach', vietnamese: 'Đại dương', character: 'Ocean', transcription: '/ˈəʊ.ʃən/'),
-  Word(topic: 'Beach', vietnamese: 'Sóng', character: 'Wave', transcription: '/weɪv/'),
-
   // --- Chủ đề: Tourism (Du lịch) ---
   Word(topic: 'Tourism', vietnamese: 'Hộ chiếu', character: 'Passport', transcription: '/ˈpɑːs.pɔːt/'),
   Word(topic: 'Tourism', vietnamese: 'Khách sạn', character: 'Hotel', transcription: '/həʊˈtel/'),
@@ -25,13 +17,6 @@ final List<Word> words = [
   Word(topic: 'Cuisine', vietnamese: 'Bánh mì', character: 'Bread', transcription: '/bred/'),
   Word(topic: 'Cuisine', vietnamese: 'Phô mai', character: 'Cheese', transcription: '/tʃiːz/'),
 
-  // --- Chủ đề: School (Trường học) ---
-  Word(topic: 'School', vietnamese: 'Giáo viên', character: 'Teacher', transcription: '/ˈtiː.tʃər/'),
-  Word(topic: 'School', vietnamese: 'Học sinh', character: 'Student', transcription: '/ˈstjuː.dənt/'),
-  Word(topic: 'School', vietnamese: 'Sách', character: 'Book', transcription: '/bʊk/'),
-  Word(topic: 'School', vietnamese: 'Bài tập về nhà', character: 'Homework', transcription: '/ˈhəʊm.wɜːk/'),
-  Word(topic: 'School', vietnamese: 'Thư viện', character: 'Library', transcription: '/ˈlaɪ.brər.i/'),
-  Word(topic: 'School', vietnamese: 'Lớp học', character: 'Classroom', transcription: '/ˈklɑːs.ruːm/'),
 
   // --- Chủ đề: Technology (Công nghệ) ---
   Word(topic: 'Technology', vietnamese: 'Máy tính', character: 'Computer', transcription: '/kəmˈpjuː.tər/'),
@@ -97,21 +82,6 @@ final List<Word> words = [
   Word(topic: 'Colors', vietnamese: 'Đen', character: 'Black', transcription: '/blæk/'),
   Word(topic: 'Colors', vietnamese: 'Trắng', character: 'White', transcription: '/waɪt/'),
 
-  // --- Chủ đề: Vehicles (Phương tiện) ---
-  Word(topic: 'Vehicles', vietnamese: 'Ô tô', character: 'Car', transcription: '/kɑːr/'),
-  Word(topic: 'Vehicles', vietnamese: 'Xe đạp', character: 'Bicycle', transcription: '/ˈbaɪ.sɪ.kəl/'),
-  Word(topic: 'Vehicles', vietnamese: 'Xe buýt', character: 'Bus', transcription: '/bʌs/'),
-  Word(topic: 'Vehicles', vietnamese: 'Tàu hỏa', character: 'Train', transcription: '/treɪn/'),
-  Word(topic: 'Vehicles', vietnamese: 'Xe máy', character: 'Motorcycle', transcription: '/ˈməʊ.tə.saɪ.kəl/'),
-  Word(topic: 'Vehicles', vietnamese: 'Máy bay', character: 'Airplane', transcription: '/ˈeə.pleɪn/'),
-
-  // --- Chủ đề: Costumes (Trang phục) ---
-  Word(topic: 'Costumes', vietnamese: 'Áo sơ mi', character: 'Shirt', transcription: '/ʃɜːt/'),
-  Word(topic: 'Costumes', vietnamese: 'Giày', character: 'Shoes', transcription: '/ʃuːz/'),
-  Word(topic: 'Costumes', vietnamese: 'Quần dài', character: 'Trousers', transcription: '/ˈtraʊ.zəz/'),
-  Word(topic: 'Costumes', vietnamese: 'Váy (liền thân)', character: 'Dress', transcription: '/dres/'),
-  Word(topic: 'Costumes', vietnamese: 'Mũ', character: 'Hat', transcription: '/hæt/'), 
-  Word(topic: 'Costumes', vietnamese: 'Áo khoác', character: 'Jacket', transcription: '/ˈdʒæk.ɪt/'),
 
   // --- Chủ đề: Jobs (Nghề nghiệp) ---
   Word(topic: 'Jobs', vietnamese: 'Đầu bếp', character: 'Chef', transcription: '/ʃef/'),
