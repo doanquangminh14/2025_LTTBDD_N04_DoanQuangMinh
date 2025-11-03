@@ -22,13 +22,13 @@ class Card2 extends StatelessWidget {
             notifier.runSwipeCard2(direction: SlideDirection.leftAway);
             notifier.runSlideCard1();
             notifier.setIgnoreTouch(ignore: true);
-            notifier.generateCurrentWord();
+            notifier.generateCurrentWord(context: context);
           }
           if (details.primaryVelocity! < -100) {
             notifier.runSwipeCard2(direction: SlideDirection.rightAway);
             notifier.runSlideCard1();
             notifier.setIgnoreTouch(ignore: true);
-            notifier.generateCurrentWord();
+            notifier.generateCurrentWord(context: context);
           }
         },
         child: HalfFlipAnimation(

@@ -16,6 +16,7 @@ class CustomAppBar extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
+              notifier.reset();
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => HomePage()),

@@ -32,4 +32,35 @@ final appTheme = ThemeData(
   ),
  scaffoldBackgroundColor: ngocnhat,
 
+  dialogTheme: DialogThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(kCircularBorderRadius),
+    ),
+    backgroundColor: ngocdam,
+    titleTextStyle: TextStyle(
+      fontFamily: GoogleFonts.notoSans().fontFamily,
+      fontSize: 20,
+      color: Colors.white
+    ),
+  ),
+
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(kCircularBorderRadius),
+        side: BorderSide(
+          color: Colors.white,
+        ),
+      ),
+        backgroundColor: ngocnhat,
+      textStyle: TextStyle(
+        fontFamily: GoogleFonts.notoSans().fontFamily,
+        color: Colors.white,
+          fontSize: 15,
+      )
+
+    )
+  )
+
+
 );

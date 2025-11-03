@@ -22,7 +22,7 @@ class _FlashcardsPageState extends State<FlashcardsPage> {
       final flashcardsNotifier = Provider.of<FlashcardsNotifier>(context, listen: false);
       flashcardsNotifier.runSlideCard1();
       flashcardsNotifier.generateAllSelectedWords();
-      flashcardsNotifier.generateCurrentWord();
+      flashcardsNotifier.generateCurrentWord(context: context);
     });
     super.initState();
   }

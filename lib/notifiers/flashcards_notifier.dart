@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flashcard_app/components/flashcards_page/results_box.dart';
 import 'package:flashcard_app/configs/constants.dart';
 import 'package:flashcard_app/data/words.dart';
 import 'package:flashcard_app/enums/slide_direction.dart';
@@ -8,11 +9,21 @@ import 'package:flutter/material.dart';
 
 class FlashcardsNotifier extends ChangeNotifier{
 
+  List<Word> incorrectCards = [];
+
   String topic = "";
   Word word1 = Word(topic: "",vietnamese: "Mui ten",character: "", transcription: "");
   Word word2 = Word(topic: "",vietnamese: "Mui ten",character: "", transcription: "");
   
   List<Word> selectedWords =[];
+
+  bool isFirstRound = true, isRoundCompleted =false, isSessionCompleted = false;
+
+  reset(){
+    isFirstRound = true;
+    isRoundCompleted =false;
+    isSessionCompleted = false;
+  }
 
   setTopic({required String topic}){
      this.topic = topic;
@@ -20,23 +31,50 @@ class FlashcardsNotifier extends ChangeNotifier{
   }
 
 generateAllSelectedWords(){
+
   selectedWords.clear();
-  selectedWords = words.where((element) => element.topic == topic).toList();
+  isRoundCompleted = false;
+    if(isFirstRound){
+    selectedWords = words.where((element) => element.topic == topic).toList();
+    }else{
+      selectedWords = incorrectCards.toList();
+      incorrectCards.clear();
+    }
+
 }
 
-generateCurrentWord(){
+generateCurrentWord({required BuildContext context}){
+
   if(selectedWords.isNotEmpty){
       final r = Random().nextInt(selectedWords.length);
       word1 = selectedWords[r];
       selectedWords.removeAt(r);
   }else{
-    print('all works selected');
+    if(incorrectCards.isEmpty){
+        isSessionCompleted = true;
+        print('session completed: $isSessionCompleted');
+    }
+    isRoundCompleted = true;
+    isFirstRound = false;
+
+  Future.delayed(Duration(milliseconds: 500),(){
+      showDialog(context: context, builder: (context) => ResultsBox());
+    });
+
   }
 
   Future.delayed(const Duration(milliseconds: kSlideAwayDuration),(){
          word2 = word1;
   });
 
+}
+
+updateCardOutcome({required Word word, required bool isCorrect}){
+    if(!isCorrect){
+      incorrectCards.add(word);
+    }
+    incorrectCards.forEach((element) => print(element.vietnamese));
+    notifyListeners();
 }
 
 ///Animation Code
@@ -80,6 +118,7 @@ runFlipCard2(){
   }
 
 runSwipeCard2({required SlideDirection direction}){
+    updateCardOutcome(word: word2, isCorrect: direction == SlideDirection.leftAway );
   swipedDirection = direction;
   resetSwipeCard2 = false;
   swipeCard2 = true;
