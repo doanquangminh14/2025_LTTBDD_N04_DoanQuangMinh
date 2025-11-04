@@ -1,5 +1,7 @@
 import 'package:flashcard_app/components/flashcards_page/tts_button.dart';
+import 'package:flashcard_app/enums/settings.dart';
 import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
+import 'package:flashcard_app/notifiers/settings_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,23 +14,57 @@ class CardDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Consumer<FlashcardsNotifier>(
-        builder:(_,notifier,__) =>  isCard1 ? Column(
-             children: [
-               buildImage(notifier.word1.vietnamese),
-               buildTextBox(notifier.word1.vietnamese,context,1),
+      padding: const EdgeInsets.all(28.0),
+      child: Consumer<SettingsNotifier>(
+        builder:(_,notifier,__) {
 
-             ],
-        ):
-        Column(
-          children: [
-            buildImage(notifier.word2.vietnamese),
-            buildTextBox(notifier.word1.character, context,2),
-            buildTextBox(notifier.word1.transcription, context,1),
-            TTSButton(),
-          ],
-        ),
+        final setVietnameseFirst = notifier.displayOptions.entries.firstWhere((element) =>
+        element.key == Settings.vietnameseFirst).value;
+
+        final showTranscription =  notifier.displayOptions.entries.firstWhere((element) =>
+        element.key == Settings.showTranscription).value;
+
+        final audioOnly =   notifier.displayOptions.entries.firstWhere((element) =>
+        element.key == Settings.audioOnly).value;
+
+          return Consumer<FlashcardsNotifier>(
+          builder:(_,notifier,__) =>  isCard1 ? Column(
+               children: [
+                 if(audioOnly) ... [
+                    TTSButton()
+                 ] else if(showTranscription)...[
+                   buildTextBox(notifier.word1.character,context,3),
+                   showTranscription ? buildTextBox(notifier.word1.transcription,context,1) : SizedBox()
+                 ]else ... [
+                   buildImage(notifier.word1.vietnamese),
+                   buildTextBox(notifier.word1.vietnamese,context,1),
+                 ]
+
+
+               ],
+          ):
+          Column(
+            children: [
+              if(audioOnly)...[
+                buildImage(notifier.word2.vietnamese),
+                buildTextBox(notifier.word2.vietnamese, context,2),
+                buildTextBox(notifier.word2.character, context,2),
+                showTranscription ? buildTextBox(notifier.word2.transcription,context,1) : SizedBox(),
+                TTSButton(),
+              ] else if(showTranscription) ...[
+                buildImage(notifier.word2.vietnamese),
+                buildTextBox(notifier.word2.vietnamese, context,2),
+                TTSButton(),
+              ]else ...[
+                buildImage(notifier.word2.vietnamese),
+                buildTextBox(notifier.word2.character, context,2),
+                showTranscription ? buildTextBox(notifier.word2.transcription,context,1) : SizedBox(),
+              ]
+
+            ],
+          ),
+        );
+        },
       ),
     );
   }
