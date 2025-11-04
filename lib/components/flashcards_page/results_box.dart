@@ -19,37 +19,71 @@ class ResultsBox extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         actions: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          Table(
+            columnWidths: {
+              0: FlexColumnWidth(3),
+              1: FlexColumnWidth(1),
+            },
             children: [
-              notifier.isSessionCompleted
-                  ? SizedBox()
-                  : ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FlashcardsPage(),
-                          ),
-                        );
-                      },
-                      child: Text('Retest Incorrect Cards'),
-                    ),
-              ElevatedButton(
-                onPressed: () {
-                  notifier.reset();
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                    (route) => false,
-                  );
-                },
-                child: Text('Home'),
-              ),
+              buildTableRow(title: 'Total Round', stat: notifier.roundTally.toString() ),
+              buildTableRow(title: 'No. Cards', stat: notifier.cardTally.toString() ),
+              buildTableRow(title: 'No. Correct', stat: notifier.correctTally.toString() ),
+              buildTableRow(title: 'No. Incorrect', stat: notifier.incorrectTally.toString() ),
+              buildTableRow(title: 'Correct Percentage', stat: '${notifier.correctPercentage.toString()}%' ),
             ],
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  notifier.isSessionCompleted
+                      ? SizedBox()
+                      : ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FlashcardsPage(),
+                              ),
+                            );
+                          },
+                          child: Text('Retest Incorrect Cards'),
+                        ),
+                  ElevatedButton(
+                    onPressed: () {
+                      notifier.reset();
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                        (route) => false,
+                      );
+                    },
+                    child: Text('Home'),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
     );
+  }
+
+  TableRow buildTableRow({required String title, required String stat}) {
+    return TableRow(
+              children: [
+                TableCell(child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(title),
+                )),
+                TableCell(child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(stat, textAlign: TextAlign.right,),
+                )),
+              ]
+            );
   }
 }

@@ -9,6 +9,13 @@ import 'package:flutter/material.dart';
 
 class FlashcardsNotifier extends ChangeNotifier{
 
+int roundTally = 0, cardTally = 0, correctTally = 0, incorrectTally = 0, correctPercentage = 0;
+
+calculateCorrectPercentage(){
+  final percentage = correctTally / cardTally;
+  correctPercentage = (percentage * 100).round();
+}
+
   List<Word> incorrectCards = [];
 
   String topic = "";
@@ -23,6 +30,7 @@ class FlashcardsNotifier extends ChangeNotifier{
     isFirstRound = true;
     isRoundCompleted =false;
     isSessionCompleted = false;
+    roundTally = 0;
   }
 
   setTopic({required String topic}){
@@ -40,7 +48,10 @@ generateAllSelectedWords(){
       selectedWords = incorrectCards.toList();
       incorrectCards.clear();
     }
-
+    roundTally++;
+    cardTally = selectedWords.length;
+    correctTally = 0;
+    incorrectTally = 0;
 }
 
 generateCurrentWord({required BuildContext context}){
@@ -56,7 +67,7 @@ generateCurrentWord({required BuildContext context}){
     }
     isRoundCompleted = true;
     isFirstRound = false;
-
+    calculateCorrectPercentage();
   Future.delayed(Duration(milliseconds: 500),(){
       showDialog(context: context, builder: (context) => ResultsBox());
     });
@@ -72,8 +83,10 @@ generateCurrentWord({required BuildContext context}){
 updateCardOutcome({required Word word, required bool isCorrect}){
     if(!isCorrect){
       incorrectCards.add(word);
+      incorrectTally++;
+    }else{
+      correctTally++;
     }
-    incorrectCards.forEach((element) => print(element.vietnamese));
     notifyListeners();
 }
 
