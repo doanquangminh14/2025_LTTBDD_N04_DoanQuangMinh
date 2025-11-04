@@ -57,10 +57,14 @@ final appTheme = ThemeData(
         fontFamily: GoogleFonts.notoSans().fontFamily,
         color: Colors.white,
           fontSize: 15,
-      )
+      ),
 
-    )
-  )
+    ),
+  ),
 
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+     color: ngocdam,
+  linearTrackColor: Colors.grey,
+),
 
 );

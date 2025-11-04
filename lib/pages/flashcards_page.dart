@@ -2,6 +2,7 @@
 //import 'package:flashcard_app/animations/slide_animation.dart';
 import 'package:flashcard_app/components/flashcards_page/card_1.dart';
 import 'package:flashcard_app/components/flashcards_page/card_2.dart';
+import 'package:flashcard_app/components/flashcards_page/progress_bar.dart';
 //import 'package:flashcard_app/enums/slide_direction.dart';
 import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,14 @@ class _FlashcardsPageState extends State<FlashcardsPage> {
         ),
         body: IgnorePointer(
           ignoring: notifier.ignoreTouches,
-          child: Stack(children: [Card2(), Card1()]),
+          child: Stack(children: [
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: ProgressBar()),
+            Card2(),
+            Card1(),
+           ],
+          ),
         ),
       ),
     );

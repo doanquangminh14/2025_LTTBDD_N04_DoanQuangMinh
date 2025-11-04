@@ -16,6 +16,19 @@ calculateCorrectPercentage(){
   correctPercentage = (percentage * 100).round();
 }
 
+double percentComplete = 0.0;
+
+calculateCompletedPercent(){
+  percentComplete = (correctTally + incorrectTally) / cardTally;
+  notifyListeners();
+}
+
+resetprogressBar(){
+    percentComplete = 0.0;
+    notifyListeners();
+}
+
+
   List<Word> incorrectCards = [];
 
   String topic = "";
@@ -52,6 +65,7 @@ generateAllSelectedWords(){
     cardTally = selectedWords.length;
     correctTally = 0;
     incorrectTally = 0;
+    resetprogressBar();
 }
 
 generateCurrentWord({required BuildContext context}){
@@ -87,6 +101,7 @@ updateCardOutcome({required Word word, required bool isCorrect}){
     }else{
       correctTally++;
     }
+    calculateCompletedPercent();
     notifyListeners();
 }
 
