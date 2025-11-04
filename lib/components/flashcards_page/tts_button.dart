@@ -1,4 +1,5 @@
 import 'package:flashcard_app/configs/constants.dart';
+import 'package:flashcard_app/models/word.dart';
 import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -6,7 +7,7 @@ import 'package:provider/provider.dart';
 
 
 class TTSButton extends StatefulWidget {
-  const TTSButton({super.key});
+  const TTSButton({super.key, required Word word});
 
   @override
   State<TTSButton> createState() => _TTSButtonState();

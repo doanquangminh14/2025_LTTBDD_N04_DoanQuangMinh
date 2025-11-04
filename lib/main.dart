@@ -1,6 +1,7 @@
 import 'package:flashcard_app/configs/themes.dart';
 import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
 import 'package:flashcard_app/notifiers/settings_notifier.dart';
+import 'package:flashcard_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcard_app/pages/home_page.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'English FlashCard',
       theme: appTheme,
-      home: const HomePage(),
+      home: const LoginPage(),
     );
   }
 }

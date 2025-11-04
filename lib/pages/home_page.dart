@@ -6,6 +6,8 @@ import '../data/words.dart';
 import '../components/home_page/topic_tile.dart';
 import '../configs/constants.dart';
 import '../notifiers/flashcards_notifier.dart';
+import 'package:flashcard_app/pages/profile_page.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -65,15 +67,25 @@ class _HomePageState extends State<HomePage> {
                 child: const
                 Text('English Flashcards'
                 )),
+
             Column(
               children: [
-                SizedBox(
-                  width: size.width * kIconPadding,
-                  child: Image.asset('assets/images/Review.png'),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProfilePage()),
+                    );
+                  },
+                  child: SizedBox(
+                    width: size.width * kIconPadding,
+                    child: Image.asset('assets/images/avata.png'),
+                  ),
                 ),
                 SizedBox(height: size.height * kIconPadding),
               ],
             ),
+
           ],
         ),
         centerTitle: true,

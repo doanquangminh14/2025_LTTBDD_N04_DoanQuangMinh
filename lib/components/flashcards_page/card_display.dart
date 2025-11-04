@@ -31,10 +31,11 @@ class CardDisplay extends StatelessWidget {
           builder:(_,notifier,__) =>  isCard1 ? Column(
                children: [
                  if(audioOnly) ... [
-                    TTSButton()
-                 ] else if(showTranscription)...[
+                    TTSButton(word: notifier.word1)
+                 ] else if(!setVietnameseFirst)...[
                    buildTextBox(notifier.word1.character,context,3),
-                   showTranscription ? buildTextBox(notifier.word1.transcription,context,1) : SizedBox()
+                   showTranscription ? buildTextBox(notifier.word1.transcription,context,1) : SizedBox(),
+                   TTSButton(word: notifier.word1)
                  ]else ... [
                    buildImage(notifier.word1.vietnamese),
                    buildTextBox(notifier.word1.vietnamese,context,1),
@@ -50,15 +51,16 @@ class CardDisplay extends StatelessWidget {
                 buildTextBox(notifier.word2.vietnamese, context,2),
                 buildTextBox(notifier.word2.character, context,2),
                 showTranscription ? buildTextBox(notifier.word2.transcription,context,1) : SizedBox(),
-                TTSButton(),
-              ] else if(showTranscription) ...[
+                TTSButton(word: notifier.word1),
+              ] else if(!setVietnameseFirst) ...[
                 buildImage(notifier.word2.vietnamese),
                 buildTextBox(notifier.word2.vietnamese, context,2),
-                TTSButton(),
+                TTSButton(word: notifier.word1),
               ]else ...[
                 buildImage(notifier.word2.vietnamese),
                 buildTextBox(notifier.word2.character, context,2),
                 showTranscription ? buildTextBox(notifier.word2.transcription,context,1) : SizedBox(),
+                TTSButton(word: notifier.word1),
               ]
 
             ],
