@@ -9,3 +9,5 @@ const int kSlideAwayDuration = 600;
 const double kCircularBorderRadius = 30;
 
 const double kCardBorderWidth = 5;
+
+const double kAppBarHeight = 56;

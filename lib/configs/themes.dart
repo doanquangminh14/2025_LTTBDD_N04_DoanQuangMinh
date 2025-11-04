@@ -67,4 +67,8 @@ final appTheme = ThemeData(
   linearTrackColor: Colors.grey,
 ),
 
+  switchTheme: SwitchThemeData(
+    thumbColor: MaterialStateProperty.all<Color>(ngocdam)
+  )
+
 );

@@ -3,6 +3,7 @@
 import 'package:flashcard_app/components/flashcards_page/card_1.dart';
 import 'package:flashcard_app/components/flashcards_page/card_2.dart';
 import 'package:flashcard_app/components/flashcards_page/progress_bar.dart';
+import 'package:flashcard_app/configs/constants.dart';
 //import 'package:flashcard_app/enums/slide_direction.dart';
 import 'package:flashcard_app/notifiers/flashcards_notifier.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _FlashcardsPageState extends State<FlashcardsPage> {
     return Consumer<FlashcardsNotifier>(
       builder: (_, notifier, __) => Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56),
+          preferredSize: Size.fromHeight(kAppBarHeight),
           child: CustomAppBar(),
         ),
         body: IgnorePointer(
