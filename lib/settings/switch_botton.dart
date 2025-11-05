@@ -20,7 +20,7 @@ class SwitchButton extends StatelessWidget {
               SwitchListTile(
                 inactiveThumbColor: Colors.black.withOpacity(0.50),
                   tileColor: disabled ? Colors.black.withOpacity(0.50) : Colors.transparent ,
-                  title: Text(displayOption.toText()),
+                  title: Text(displayOption.toText(context)),
                   value: notifier.displayOptions.entries.firstWhere((element) => element.key
                       == displayOption).value,
 

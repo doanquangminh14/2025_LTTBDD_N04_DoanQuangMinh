@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class ResultsBox extends StatelessWidget {
   const ResultsBox({super.key});
 
@@ -14,8 +16,10 @@ class ResultsBox extends StatelessWidget {
       builder: (_, notifier, __) => AlertDialog(
         title: Text(
           notifier.isSessionCompleted
-              ? 'Session Completed!'
-              : 'Round Completed',
+              ? AppLocalizations.of(context)?.resultsSessionCompleted ??
+              'Session Completed!'
+              : AppLocalizations.of(context)?.resultsRoundCompleted ??
+              'Round Completed',
           textAlign: TextAlign.center,
         ),
         actions: [
@@ -25,11 +29,26 @@ class ResultsBox extends StatelessWidget {
               1: FlexColumnWidth(1),
             },
             children: [
-              buildTableRow(title: 'Total Round', stat: notifier.roundTally.toString() ),
-              buildTableRow(title: 'No. Cards', stat: notifier.cardTally.toString() ),
-              buildTableRow(title: 'No. Correct', stat: notifier.correctTally.toString() ),
-              buildTableRow(title: 'No. Incorrect', stat: notifier.incorrectTally.toString() ),
-              buildTableRow(title: 'Correct Percentage', stat: '${notifier.correctPercentage.toString()}%' ),
+              buildTableRow(
+                  title: AppLocalizations.of(context)?.resultsTotalRound ??
+                      'Total Round',
+                  stat: notifier.roundTally.toString()),
+              buildTableRow(
+                  title: AppLocalizations.of(context)?.resultsTotalCards ??
+                      'Total Cards',
+                  stat: notifier.cardTally.toString()),
+              buildTableRow(
+                  title:
+                  AppLocalizations.of(context)?.resultsCorrect ?? 'Correct',
+                  stat: notifier.correctTally.toString()),
+              buildTableRow(
+                  title: AppLocalizations.of(context)?.resultsIncorrect ??
+                      'Incorrect',
+                  stat: notifier.incorrectTally.toString()),
+              buildTableRow(
+                  title: AppLocalizations.of(context)?.resultsCorrectPercentage ??
+                      'Correct Percentage',
+                  stat: '${notifier.correctPercentage.toString()}%'),
             ],
           ),
           SizedBox(
@@ -50,7 +69,8 @@ class ResultsBox extends StatelessWidget {
                               ),
                             );
                           },
-                          child: Text('Retest Incorrect Cards'),
+                          child:  Text(AppLocalizations.of(context)?.resultsRetestButton ??
+                                  'Retest Incorrect Cards'),
                         ),
                   ElevatedButton(
                     onPressed: () {
@@ -61,7 +81,8 @@ class ResultsBox extends StatelessWidget {
                         (route) => false,
                       );
                     },
-                    child: Text('Home'),
+                    child: Text(AppLocalizations.of(context)?.resultsHomeButton ??
+                            'Home'),
                   ),
                 ],
               ),

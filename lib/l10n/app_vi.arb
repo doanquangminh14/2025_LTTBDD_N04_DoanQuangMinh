@@ -1,0 +1,28 @@
+{
+  "personalInformation": "Thông tin cá nhân",
+  "studentId": "Mã sinh viên",
+  "email": "Email",
+  "groupSize": "Số thành viên nhóm",
+  "className": "Lớp học phần",
+  "teacher": "Giảng viên",
+  "back": "Quay lại",
+  "settingsReset": "Cài đặt lại",
+  "settingsExit": "Thoát ứng dụng",
+  "settingsLanguage": "Ngôn ngữ",
+  "resultsSessionCompleted": "Hoàn thành phiên học!",
+  "resultsRoundCompleted": "Hoàn thành vòng!",
+   "resultsTotalRound": "Tổng số vòng",
+   "resultsTotalCards": "Tổng số thẻ",
+   "resultsCorrect": "Số thẻ đúng",
+    "resultsIncorrect": "Số thẻ sai",
+    "resultsCorrectPercentage": "Tỷ lệ đúng",
+   "resultsRetestButton": "Kiểm tra lại thẻ sai",
+    "resultsHomeButton": "Về trang chủ",
+    "appTitle": "Thẻ học Tiếng Anh",
+    "settingsTitle": "Cài đặt",
+    "settingsVietnameseFirst": "Ưu tiên Tiếng Việt",
+    "settingsShowTranscription": "Hiển thị phiên âm",
+    "settingsAudioOnly": "Kiểm tra nghe"
+}
+
+

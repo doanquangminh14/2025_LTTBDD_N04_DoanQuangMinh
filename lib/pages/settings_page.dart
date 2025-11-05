@@ -9,6 +9,7 @@ import '../configs/constants.dart';
 import '../enums/settings.dart';
 import '../settings/settings_title.dart';
 import '../settings/switch_botton.dart';
+import 'package:flashcard_app/l10n/app_localizations.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -37,17 +38,62 @@ class _SettingsPageState extends State<SettingsPage> {
                 SwitchButton(disabled: audioFirst, displayOption: Settings.vietnameseFirst,),
                 SwitchButton(displayOption:  Settings.showTranscription,),
                 SwitchButton(displayOption:  Settings.audioOnly,),
+
+
+
+                const SizedBox(height: 20),
+                Text(
+                  AppLocalizations.of(context)?.settingsLanguage ?? 'Language',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                DropdownButton<Locale>(
+                  value: notifier.locale,
+                  items: const [
+                    DropdownMenuItem(
+                      value: Locale('en'),
+                      child: Text('English 🇬🇧'),
+                    ),
+                    DropdownMenuItem(
+                      value: Locale('vi'),
+                      child: Text('Tiếng Việt 🇻🇳'),
+                    ),
+                  ],
+                  onChanged: (locale) {
+                    if (locale != null) {
+                      notifier.setLocale(locale);
+                    }
+                  },
+                ),
+
+
+
+
+
               ],
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SettingsTile(title: 'Reset', icon: Icon(Icons.refresh),callback: (){
-                  notifier.resetSettings();
-                },),
-                SettingsTile(title: 'Exit App', icon: Icon(Icons.exit_to_app),callback: (){
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                },),
+                SettingsTile(
+
+                  title: AppLocalizations.of(context)?.settingsReset ?? 'Reset',
+                  icon: Icon(Icons.refresh),
+                  callback: () {
+                    notifier.resetSettings();
+                  },
+                ),
+                SettingsTile(
+
+                  title: AppLocalizations.of(context)?.settingsExit ?? 'Exit App',
+                  icon: Icon(Icons.exit_to_app),
+                  callback: () {
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  },
+                ),
               ],
             )
           ],

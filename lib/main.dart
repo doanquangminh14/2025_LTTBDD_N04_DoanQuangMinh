@@ -6,6 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flashcard_app/pages/home_page.dart';
 import 'package:provider/provider.dart';
 //import 'configs/themes.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
+import 'l10n/app_localizations.dart';
+import 'l10n/l10n.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -21,11 +25,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'English FlashCard',
-      theme: appTheme,
-      home: const LoginPage(),
+    return Consumer<SettingsNotifier>(
+        builder: (context, settingsNotifier, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'English FlashCard',
+            theme: appTheme,
+
+            supportedLocales: L10n.all,
+
+
+            locale: settingsNotifier.locale,
+
+
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            home: const LoginPage(),
+          );
+        },
     );
   }
 }

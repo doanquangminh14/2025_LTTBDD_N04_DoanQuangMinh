@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../data/words.dart';
 import '../components/home_page/topic_tile.dart';
 import '../configs/constants.dart';
+import '../l10n/app_localizations.dart';
 import '../notifiers/flashcards_notifier.dart';
 import 'package:flashcard_app/pages/profile_page.dart';
 
@@ -63,9 +64,10 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(height: size.height * kIconPadding),
               ],
             ),
-            const FadeInAnimation(
-                child: const
-                Text('English Flashcards'
+            FadeInAnimation(
+                child:
+                Text(
+                  AppLocalizations.of(context)?.appTitle ?? 'English Flashcards',
                 )),
 
             Column(
